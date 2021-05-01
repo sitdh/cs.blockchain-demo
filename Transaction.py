@@ -25,6 +25,6 @@ class Transaction:
   def sign_transaction(self):
     private_key = self.sender._private_key
     signer = PKCS1_v1_5.new(private_key) #v2 recommended
-    hash_massage = SHA.new(str(self.to_dict()).encode('utf8'))
+    hash_message = SHA.new(str(self.to_dict()).encode('utf8'))
     
-    return binascii.hexlify(signer.sigh(hash_message)).decode('ascii')
+    return binascii.hexlify(signer.sign(hash_message)).decode('ascii')
